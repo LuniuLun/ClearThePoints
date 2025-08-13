@@ -3,7 +3,7 @@ import { Button, Heading, Point, Textfield, Timer } from "./components";
 import type { PointData } from "./components/Point";
 import "./App.css";
 
-function App() {
+const App = () => {
   const [valueInput, setValueInput] = useState<string>("");
   const [points, setPoints] = useState<PointData[]>([]);
   const [score, setScore] = useState<number>(0);
@@ -20,6 +20,10 @@ function App() {
     };
   }, []);
 
+  /**
+   * Handle auto play functionality
+   * Automatically clicks points in sequence with 1000ms delay
+   */
   useEffect(() => {
     if (!isAutoPlay || points.length === 0 || isStopped) {
       resetTimeout();
@@ -55,6 +59,11 @@ function App() {
     setValueInput(e.target.value);
   };
 
+  /**
+   * Generate random points within game area
+   * @param count - Number of points to generate
+   * @returns Array of PointData with random positions
+   */
   const generateRandomPoints = (count: number): PointData[] => {
     const gameArea = { width: 500, height: 300, margin: 15 };
 
@@ -68,6 +77,7 @@ function App() {
     }));
   };
 
+  /** Initialize a new game */
   const initializeGame = () => {
     const pointCount = parseInt(valueInput) || 0;
 
@@ -99,6 +109,11 @@ function App() {
     setIsAutoPlay((prev) => !prev);
   };
 
+  /**
+   * Handle point click events
+   * @param pointId - ID of clicked point
+   * @returns true if correct click, false if wrong click
+   */
   const handlePointClick = (pointId: number) => {
     if (pointId !== currentPoints) {
       setPoints((prevPoints) =>
@@ -123,6 +138,10 @@ function App() {
     return true;
   };
 
+  /**
+   * Remove a point from the view after its fade-out animation ends.
+   * @param pointId - ID of the point whose animation has ended.
+   */
   const handleAnimationEnd = (pointId: number) => {
     if (!isStopped) {
       setPoints((prevPoints) =>
@@ -183,11 +202,11 @@ function App() {
         ))}
 
         {points.length === 0 && !isStarted && (
-          <div className="app__empty-message">Nhập số điểm và nhấn Play để bắt đầu</div>
+          <div className="app__empty-message">Please enter the number of points</div>
         )}
       </div>
     </div>
   );
-}
+};
 
 export default App;
