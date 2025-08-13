@@ -34,7 +34,7 @@ function App() {
           handlePointClick(points[index].id);
           clickNextPoint(index + 1);
         }
-      }, 2000);
+      }, 1000);
 
       timeoutsRef.current.push(timeoutId);
     };
@@ -44,7 +44,7 @@ function App() {
     if (nextPointIndex !== -1) {
       clickNextPoint(nextPointIndex);
     }
-  }, [isAutoPlay, isStopped, points, currentPoints]);
+  }, [isAutoPlay, isStopped, currentPoints]);
 
   const resetTimeout = () => {
     timeoutsRef.current.forEach(clearTimeout);
