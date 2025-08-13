@@ -1,0 +1,15 @@
+.heading {
+  font-weight: bold;
+}
+
+.heading--info {
+  color: black;
+}
+
+.heading--success {
+  color: green;
+}
+
+.heading--error {
+  color: red;
+}

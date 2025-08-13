@@ -1,0 +1,62 @@
+.app {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.app__controls {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app__buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.app__game-area {
+  width: 500px;
+  height: 300px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  position: relative;
+  background-color: #f0f8ff;
+  margin: 20px 0;
+}
+
+.app__empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #666;
+}
+
+.fade-out {
+  animation: fadeOut 2s ease-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    background-color: #ff4444;
+    color: white;
+  }
+  to {
+    opacity: 0;
+    background-color: #fff;
+    color: white;
+  }
+}
+
+.wrong-click {
+  background-color: #ff4444 !important;
+  color: white !important;
+}
+
+.frozen {
+  animation-play-state: paused !important;
+}
